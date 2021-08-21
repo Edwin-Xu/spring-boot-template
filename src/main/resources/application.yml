@@ -1,0 +1,29 @@
+spring:
+  # 配置采用那套环境，dev开发、test测试、prod线上，主要是数据源不同。
+  profiles:
+    # 改这个地方就好
+    active: dev
+  application:
+    name: core
+
+server:
+  port: 8888
+
+# logback-spring.xml
+# logging:
+#  pattern:
+#    #日志打印格式:  日志级别五个字符并左对齐  时间  类名  线程  异常信息  换行符
+#    console: "[%-5level] %d{yyyy-MM-dd HH:mm:ss} %c [%thread] : %msg %n"
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  configuration:
+    #默认的枚举类型转换器
+    # default-enum-type-handler: com.ctrip.finance.atm.core.typehandler.EnumTypeHandler
+    map-underscore-to-camel-case: true
+    # sql打印，生产环境需要取消配置
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      #全局主键生成策略为递增
+      id-type: auto
